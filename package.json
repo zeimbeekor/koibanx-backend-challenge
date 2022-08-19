@@ -4,10 +4,20 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "run": "node $NODE_DEBUG_OPTION app.js"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeimbeekor/koibanx-backend-challenge.git"
+  },
+  "keywords": [],
+  "author": "Alvaro Vega Plata (zeimbeekor)",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zeimbeekor/koibanx-backend-challenge/issues"
+  },
+  "homepage": "https://github.com/zeimbeekor/koibanx-backend-challenge#readme",
   "dependencies": {
     "axios": "^0.21.0",
     "bcrypt-nodejs": "0.0.3",
@@ -16,7 +26,10 @@
     "express": "~4.17.1",
     "express-validator": "^6.12.0",
     "logger": "0.0.1",
-    "mongoose": "^5.13.2",
+    "mongoose": "^6.5.2",
     "winston": "~2.4.0"
+  },
+  "devDependencies": {
+    "git-commit-msg-linter": "^4.1.3"
   }
 }
