@@ -1,13 +1,12 @@
 const mongoose = require('mongoose');
-const User = require('../../src/models/user');
 const dotenv = require('dotenv');
 
 dotenv.config();
 
 const config = require('config');
+const User = require('../../src/models/user');
 
-mongoose.Promise = Promise;
-mongoose.connect(`mongodb://${config.get('mongodb.address')}/${config.get('mongodb.dbname')}`, { useNewUrlParser: true, useUnifiedTopology: true });
+require('../../config/mongo').dbConnect(config);
 
 const userData = {
   username: 'hjdsbdjhbaba23235252@gmail.com',

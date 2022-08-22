@@ -1,13 +1,12 @@
 const mongoose = require('mongoose');
-const Store = require('../../src/models/store');
 const dotenv = require('dotenv');
 
 dotenv.config();
 
 const config = require('config');
+const Store = require('../../src/models/store');
 
-mongoose.Promise = Promise;
-mongoose.connect(`mongodb://${config.get('mongodb.address')}/${config.get('mongodb.dbname')}`, { useNewUrlParser: true, useUnifiedTopology: true });
+require('../../config/mongo').dbConnect(config);
 
 const storeData = {
   name: 'zeimbeekor_model2600_xxxxxxxxxxxZB',
@@ -18,7 +17,6 @@ const storeData = {
   lastSale: new Date(),
 };
 
-// jest.setTimeout(120 * 1000);
 describe('Store model', () => {
   const getByStoreName = async (name) => Store.findOne({ name });
 
