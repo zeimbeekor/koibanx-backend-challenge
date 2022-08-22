@@ -12,6 +12,10 @@
         "ecmaVersion": "latest"
     },
     "rules": {
-        "func-names": 0
+        "func-names": 0,
+        "array-callback-return": 0,
+        "import/no-dynamic-require": 0,
+        "global-require": 0,
+        "no-use-before-define": 0
     }
 }
