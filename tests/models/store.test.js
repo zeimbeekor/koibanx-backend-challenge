@@ -1,15 +1,17 @@
 const mongoose = require('mongoose');
+const { v4: uuidv4 } = require('uuid');
 const dotenv = require('dotenv');
 
 dotenv.config();
 
 const config = require('config');
 const Store = require('../../src/models/store');
+const storeService = require('../../src/services/store');
 
 require('../../config/mongo').dbConnect(config);
 
 const storeData = {
-  name: 'zeimbeekor_model2600_xxxxxxxxxxxZB',
+  name: `Store_${uuidv4}`,
   cuit: '21141252525',
   concepts: ['concept1', 'concept2', 'concept3', 'concept4', 'concept5'],
   currentBalance: 12345,
@@ -20,7 +22,7 @@ const storeData = {
 describe('Store model', () => {
   const getByStoreName = async (name) => Store.findOne({ name });
 
-  it('create & save store successfully', async () => {
+  test('create & save store successfully', async () => {
     const validStore = new Store(storeData);
     const savedStore = await validStore.save();
 
@@ -33,7 +35,7 @@ describe('Store model', () => {
     expect(savedStore.lastSale).toEqual(storeData.lastSale);
   });
 
-  it('obtein store successfully', async () => {
+  test('obtein store successfully', async () => {
     const store = await getByStoreName(storeData.name);
 
     expect(store._id).toBeDefined();
@@ -45,11 +47,19 @@ describe('Store model', () => {
     expect(store.lastSale).toEqual(storeData.lastSale);
   });
 
-  it('delete store successfully', async () => {
+  test('delete store successfully', async () => {
     const store = await getByStoreName(storeData.name);
     const result = await Store.deleteOne({ name: store.name });
 
     expect(result.acknowledged).toEqual(true);
+  });
+
+  it('get all stores and paginate results', async () => {
+    const options = { page: 1, limit: 2 };
+    const stores = await storeService.getAll(options);
+
+    expect(stores.data.page).toEqual(options.page);
+    expect(stores.data.limit).toEqual(options.limit);
     mongoose.disconnect();
   });
 });
