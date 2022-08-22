@@ -1,10 +1,12 @@
+const httpStatus = require('http-status');
+
 /**
  * Handle error
  * @param {*} res
  * @param {*} error
  */
 const handleHttpError = (res, error) => {
-  res.status(500);
+  res.status(httpStatus.INTERNAL_SERVER_ERROR);
   res.send({ error });
 };
 
@@ -14,7 +16,7 @@ const handleHttpError = (res, error) => {
  * @param {*} message
  * @param {*} code
  */
-const handleErrorResponse = (res, message = 'something happened', code = 401) => {
+const handleErrorResponse = (res, message = 'something happened', code = httpStatus.UNAUTHORIZED) => {
   res.status(code);
   res.send({ error: message });
 };
