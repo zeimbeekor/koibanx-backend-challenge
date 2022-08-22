@@ -6,18 +6,18 @@
     "node": ">=16.0.0",
     "npm": ">=8.18.0"
   },
-  "main": "src/app.js",
+  "main": "src/server.js",
   "scripts": {
     "prepare": "husky install",
     "prestart": "npm install",
-    "start": "node src/app.js",
-    "start:dev": "nodemon src/app.js",
-    "start:test": "concurrently \"npm test \" \"nodemon src/app.js\"",
+    "start": "node src/server.js",
+    "start:dev": "nodemon src/server.js",
+    "start:test": "concurrently \"npm test \" \"nodemon src/server.js\"",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand --detectOpenHandles",
     "test:verbose": "jest --passWithNoTests --runInBand",
     "test:ci": "npm test -- --coverage",
     "eslint": "eslint './src/**' --fix",
-    "run": "node $NODE_DEBUG_OPTION src/app.js",
+    "run": "node $NODE_DEBUG_OPTION src/server.js",
     "lint": "eslint --ignore-path .gitignore . --ext .js,.html",
     "lint:fix": "npm run lint -- --fix"
   },
@@ -33,7 +33,6 @@
   },
   "homepage": "https://github.com/zeimbeekor/koibanx-backend-challenge#readme",
   "dependencies": {
-    "@types/helmet": "^4.0.0",
     "axios": "^0.21.0",
     "basic-auth": "^2.0.1",
     "bcrypt-nodejs": "0.0.3",
@@ -56,9 +55,11 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
+    "@types/helmet": "^4.0.0",
     "@types/jest": "^28.1.7",
     "@types/mongoose": "^5.11.97",
     "@types/node": "^18.7.8",
+    "@types/supertest": "^2.0.12",
     "concurrently": "^7.3.0",
     "eslint": "^8.22.0",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -69,7 +70,8 @@
     "lint-staged": "^13.0.3",
     "nodemon": "^2.0.19",
     "npm": "^8.18.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "supertest": "^6.2.4"
   },
   "husky": {
     "hooks": {
@@ -78,7 +80,7 @@
     }
   },
   "lint-staged": {
-    "{src,tests}/**/*.js": [
+    "{src}/**/*.js": [
       "eslint 'src/**' --fix",
       "git add"
     ]
