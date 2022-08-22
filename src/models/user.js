@@ -4,7 +4,9 @@ const encrypter = require('../utils/pwd-encrypter');
 const UserSchema = new mongoose.Schema({
   username: { type: String, required: true },
   password: { type: String, required: true },
-}, { timestamps: true });
+}, { versionKey: false, timestamps: true });
+
+UserSchema.index({ username: 1 });
 
 UserSchema.methods.verifyPassword = encrypter.verifyPassword;
 
