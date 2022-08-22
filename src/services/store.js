@@ -12,3 +12,8 @@ exports.create = async (args) => {
     .then((d) => ({ data: d, message: 'Created' }));
   return data;
 };
+
+exports.getAll = async (options) => {
+  const data = await Store.paginate({}, options);
+  return { data };
+};
