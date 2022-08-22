@@ -1,9 +1,10 @@
 const express = require('express');
-const logger = require('../utils/logger');
+const controller = require('../controllers/store');
+const basicAuth = require('../middlewares/basic-auth');
+const { Schemas, ValidateJoi } = require('../middlewares/joi');
 
 const router = express.Router();
 
-router.route('/stores')
-  .get(() => { logger.info('pending validations'); }, () => { logger.info('pending use case'); });
+router.route('/stores').post(basicAuth.verify, ValidateJoi(Schemas.stock.create), controller.create);
 
 module.exports = router;
