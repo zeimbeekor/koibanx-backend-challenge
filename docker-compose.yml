@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: stores-api
+    env_file:
+      - .env
+    environment:
+      - PORT=3000
+      - DATABASE_USERNAME=
+      - DATABASE_PASSWORD=
+      - DATABASE_HOST=mongodb
+      - DATABASE_PORT=27017
+      - DATABASE_DBNAME=stores-api
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - mongodb
+  
+  mongodb:
+    image: mongo
+    restart: always
+    container_name: mongodb
+    ports:
+      - 27017:27017
