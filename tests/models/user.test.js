@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { v4: uuidv4 } = require('uuid');
 const dotenv = require('dotenv');
 
 dotenv.config();
@@ -9,14 +10,14 @@ const User = require('../../src/models/user');
 require('../../config/mongo').dbConnect(config);
 
 const userData = {
-  username: 'hjdsbdjhbaba23235252@gmail.com',
-  password: '12345',
+  username: `email_${uuidv4}@gmail.com`,
+  password: uuidv4.toString(),
 };
 
 describe('User model', () => {
   const getByUsername = async (username) => User.findOne({ username });
 
-  it('create & save user successfully', async () => {
+  test('create & save user successfully', async () => {
     const validUser = new User(userData);
     const savedUser = await validUser.save();
 
@@ -24,14 +25,14 @@ describe('User model', () => {
     expect(savedUser.username).toBe(userData.username);
   });
 
-  it('obtein user successfully', async () => {
+  test('obtein user successfully', async () => {
     const user = await getByUsername(userData.username);
 
     expect(user._id).toBeDefined();
     expect(user.username).toBe(userData.username);
   });
 
-  it('delete user successfully', async () => {
+  test('delete user successfully', async () => {
     const user = await getByUsername(userData.username);
     const result = await User.deleteOne({ username: user.username });
 
@@ -39,7 +40,7 @@ describe('User model', () => {
   });
 
   // It should us tell us the errors in on password field
-  it('create user without required field should failed', async () => {
+  test('create user without required field should failed', async () => {
     const userWithoutRequiredField = new User({ username: 'zeimbeekor' });
     let err;
     try {
