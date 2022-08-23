@@ -6,4 +6,4 @@ exports.hashPassword = (password) => {
   return encriptedPassword;
 };
 
-exports.verifyPassword = (password) => bcrypt.compareSync(password, this.password);
+exports.verifyPassword = (password, hash) => bcrypt.compareSync(password, hash);

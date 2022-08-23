@@ -16,10 +16,7 @@
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand --detectOpenHandles",
     "test:verbose": "jest --passWithNoTests --runInBand",
     "test:ci": "npm test -- --coverage",
-    "eslint": "eslint './src/**' --fix",
-    "run": "node $NODE_DEBUG_OPTION src/server.js",
-    "lint": "eslint --ignore-path .gitignore . --ext .js,.html",
-    "lint:fix": "npm run lint -- --fix"
+    "eslint": "eslint './src/**' --fix"
   },
   "repository": {
     "type": "git",

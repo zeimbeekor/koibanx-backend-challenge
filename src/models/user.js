@@ -8,8 +8,6 @@ const UserSchema = new mongoose.Schema({
 
 UserSchema.index({ username: 1 });
 
-UserSchema.methods.verifyPassword = encrypter.verifyPassword;
-
 UserSchema.pre('save', async function (callback) {
   const user = this;
 
