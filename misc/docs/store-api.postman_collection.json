@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "17462744-d711-42a3-b13e-b678024cd78a",
+		"name": "Koibank Backend Challegen",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22837476"
+	},
+	"item": [
+		{
+			"name": "Create a store",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "test@koibanx.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"zeimbeekor_model2600_xxxxxxxxxxx2222\",\n    \"cuit\": \"21141252525\",\n    \"concepts\": [\"concept1\", \"concept2\", \"concept3\", \"concept4\", \"concept5\"],\n    \"currentBalance\": 12345,\n    \"active\": true,\n    \"lastSale\": \"2022-08-22 11:11:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/stores",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"stores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all stores and paginate results",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "test@koibanx.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/stores?page=1&limit=1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"stores"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all stores and paginate results (include sort by name)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "test@koibanx.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/stores?sort=name&page=1&limit=2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"stores"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "name"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
