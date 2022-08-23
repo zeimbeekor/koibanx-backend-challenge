@@ -1,5 +1,4 @@
 const auth = require('basic-auth');
-const compare = require('tsscmp');
 const httpStatus = require('http-status');
 
 const { handleErrorResponse } = require('../utils/handle-error');
@@ -11,24 +10,20 @@ exports.verify = async (req, res, next) => {
 
   // Basic function to validate credentials
   const check = async (name, pass) => {
-    let valid = true;
-
     const getByUsername = async (username) => User.findOne({ username });
-
     const user = await getByUsername(name);
 
-    const hashPassword = encrypter.hashPassword(pass);
+    const valid = Boolean(user !== null);
 
-    // Simple method to prevent short-circut and use timing-safe compare
-    valid = compare(name, user.username) && valid;
-    valid = compare(hashPassword, user.password) && valid;
+    const verifyPWD = valid ? encrypter.verifyPassword(pass, user.password) : valid;
 
-    return valid;
+    return Boolean(user !== null) && verifyPWD;
   };
 
-  if (!credentials || !check(credentials.name, credentials.pass)) {
+  const valid = await check(credentials.name, credentials.pass);
+
+  if (!credentials || !valid) {
     handleErrorResponse(res, 'Access denied', httpStatus.UNAUTHORIZED);
-  } else {
-    next();
   }
+  next();
 };
