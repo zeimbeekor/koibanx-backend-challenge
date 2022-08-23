@@ -1,19 +1,23 @@
 const request = require('supertest');
-
+const httpStatus = require('http-status');
 const app = require('../../src/app');
 
-const { Schemas, ValidateJoi } = require('../../src/middlewares/joi');
+// const { Schemas, ValidateJoi } = require('../../src/middlewares/joi');
+
+const userData = {
+  username: 'test@koibanx.com',
+  password: 'admin',
+};
 
 describe('Joi', () => {
-  it('create store without required fields should failed', async () => {
-    await app.post('/api/stores', ValidateJoi(Schemas.stock.create), (req, res) => {
+  it('invoke a URL that does not exist, this should return the error code http 404 (NOT FOUND)', async () => {
+    await app.get('/api/stores2', (req, res) => {
       res.send(req.body);
     });
+    const auth = Buffer.from(`${userData.username}:${userData.password}`).toString('base64');
     await request(app)
-      .post('/api/stores')
-      .send({
-        name: 'zeimbeekor', cuit: '', concepts: [], currentBalance: 0, active: true, lastSale: '2018-10-15 14:00:00',
-      })
-      .expect({ error: 'Access denied' });
+      .get('/api/stores2')
+      .set('Authorization', `Basic ${auth}`)
+      .expect(httpStatus.NOT_FOUND);
   });
 });
