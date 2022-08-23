@@ -11,13 +11,13 @@ Koibanx Backend Challenge
 
 ## Screenshots
 
-<img src="misc/screenshots/access-denied.jpg" width="400"/>   <img src="misc/screenshots/create-a-store.jpg" width="400"/>
-<img src="misc/screenshots/valid-user-to-create-store.jpg" width="400"/>   <img src="misc/screenshots/get-all-stores-and-paginate-results-2.jpg" width="400"/>
-<img src="misc/screenshots/get-all-stores-and-paginate-results.jpg" width="400"/>   <img src="misc/screenshots/docker.jpg" width="400"/>
-<img src="misc/screenshots/docker-compose-make-up.jpg" width="400"/>   <img src="misc/screenshots/docker-mongodb.jpg" width="400"/>
-<img src="misc/screenshots/docker-stores-api.jpg" width="400"/>   <img src="misc/screenshots/npm-run-eslint.jpg" width="400"/>
-<img src="misc/screenshots/npm-run-start-dev.jpg" width="400"/>   <img src="misc/screenshots/npm-run-start.jpg" width="400"/>
-<img src="misc/screenshots/npm-test.jpg" width="400"/>   <img src="misc/screenshots/github-zeimbeekor.jpg" width="400"/>
+<img src="screenshots/access-denied.jpg" width="400"/>   <img src="screenshots/create-a-store.jpg" width="400"/>
+<img src="screenshots/valid-user-to-create-store.jpg" width="400"/>   <img src="screenshots/get-all-stores-and-paginate-results-2.jpg" width="400"/>
+<img src="screenshots/get-all-stores-and-paginate-results.jpg" width="400"/>   <img src="screenshots/docker.jpg" width="400"/>
+<img src="screenshots/docker-compose-make-up.jpg" width="400"/>   <img src="screenshots/docker-mongodb.jpg" width="400"/>
+<img src="screenshots/docker-stores-api.jpg" width="400"/>   <img src="screenshots/npm-run-eslint.jpg" width="400"/>
+<img src="screenshots/npm-run-start-dev.jpg" width="400"/>   <img src="screenshots/npm-run-start.jpg" width="400"/>
+<img src="screenshots/npm-test.jpg" width="400"/>   <img src="screenshots/github-zeimbeekor.jpg" width="400"/>
 
 ## Contributing
 
